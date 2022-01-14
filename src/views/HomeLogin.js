@@ -5,7 +5,11 @@ const HomeLogin = () => {
   const [post, setPost] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5050/api/posts") //
+    fetch("http://localhost:5050/api/posts", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => {
         return response.json();
       })

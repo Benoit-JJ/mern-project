@@ -20,6 +20,12 @@ const Home = () => {
           <div>
             <Link to="/register">S'inscrire</Link>
           </div>
+          <div>
+            <Link to="/homelogin">Page après login</Link>
+          </div>
+          <div>
+            <Link to="/addpost">Ajouter un post</Link>
+          </div>
         </div>
       </nav>
     </div>

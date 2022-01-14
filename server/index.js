@@ -4,7 +4,6 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-
 const app = express();
 // Import des Routes
 const authRoute = require("./routes/auth");
@@ -20,7 +19,6 @@ mongoose.connect(`${process.env.DB_CONNECT}`, () => {
 //Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./public"));
-
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());

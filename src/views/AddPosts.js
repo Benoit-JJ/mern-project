@@ -4,21 +4,19 @@ const AddPosts = () => {
   const [title, setTitle] = useState("");
   const [select, setSelect] = useState("");
   const [body, setBody] = useState("");
-  const [picture, setPicture] = useState("");
+  const [picture, setPicture] = useState(null);
 
   const handleSubmitPost = (event) => {
     event.preventDefault();
 
+    const form = new FormData();
+    form.append("title", title);
+    form.append("picture", picture);
     const url = "http://localhost:5050/api/posts/addpost";
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        title: title,
-        select: select.value,
-        body: body,
-        picture: picture,
-      }),
+      // headers: { "Content-Type": "application/json" },
+      body: form,
     };
     fetch(url, requestOptions)
       .then((response) => console.log("Submitted successfully"))
@@ -74,7 +72,7 @@ const AddPosts = () => {
           <input
             type="file"
             name="picture"
-            onChange={(e) => setPicture(e.target.value)}
+            onChange={(e) => setPicture(e.target.files[0])}
           />
         </div>
         <button className="btn btn-primary">Publier !</button>

@@ -4,12 +4,8 @@ const postSchema = new mongoose.Schema(
   {
     title: String,
     body: String,
-    picture: {
-      name: String,
-      desc: String,
-      data: Buffer,
-      contentType: String,
-    },
+    select: String,
+    picture: String,
   },
   { timestamps: true }
 );

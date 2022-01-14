@@ -17,7 +17,13 @@ const Login = () => {
       }),
     };
     fetch(url, requestOptions)
-      .then((response) => console.log("Connexion avec succès"))
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        console.log("Connexion avec succès");
+        window.localStorage.setItem("token", response.token);
+      })
       .catch((error) => console.log("Form submit error", error));
 
     console.log(email);

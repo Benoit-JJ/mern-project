@@ -1,15 +1,26 @@
 const router = require("express").Router();
 const verify = require("./verifyToken");
 const Post = require("../models/Post");
-const multer = require("multer");
-const multerConfig = require("../middleware/multer-config");
-const upload = multer({ dest: "uploads/" });
+const path = require("path");
 
-router.post("/addpost", multerConfig, async (req, res) => {
+// MULTER
+const multer = require("multer");
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+const upload = multer({ storage: storage });
+
+router.post("/addpost", upload.single("picture"), async (req, res) => {
+  console.log(req.files);
   const post = new Post({
     title: req.body.title,
     body: req.body.body,
-    picture: req.body.picture,
+    select: req.query.select,
   });
 
   try {
