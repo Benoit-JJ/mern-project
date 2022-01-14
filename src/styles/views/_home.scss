@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "Poppins";
+  src: url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap")
+    format(truetype);
+}
+
+.container {
+  text-align: center;
+  margin-top: 8rem;
+  border-radius: 2rem;
+  height: 35rem;
+  font-family: "Poppins";
+
+  .presentation {
+    padding-top: 5rem;
+
+    p {
+      padding-top: 1.5rem;
+    }
+  }
+
+  .link-home {
+    margin-top: 8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
